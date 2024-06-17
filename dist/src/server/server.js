@@ -35,6 +35,8 @@ const donador_routes_1 = __importDefault(require("../modules/reports/routers/don
 const nota_entrega_routes_1 = __importDefault(require("../modules/reports/routers/nota_entrega.routes"));
 const nota_salida_routes_1 = __importDefault(require("../modules/reports/routers/nota_salida.routes"));
 const libro_catalogo_routes_1 = __importDefault(require("../modules/rent/routers/libro_catalogo.routes"));
+const prestamo_routes_1 = __importDefault(require("../modules/rent/routers/prestamo.routes"));
+const detprestamo_routes_1 = __importDefault(require("../modules/rent/routers/detprestamo.routes"));
 class Server {
     constructor() {
         this.apiPaths = {
@@ -55,6 +57,8 @@ class Server {
             nota_entrega: "/api/nota_entrega",
             nota_salida: "/api/nota_salida",
             libro_catalogo: "/api/libro_catalogo",
+            prestamo: "/api/prestamo",
+            detprestamo: "/api/detprestamo",
         };
         this.app = (0, express_1.default)();
         this.port = config_1.default.PORT || "8000";
@@ -101,6 +105,8 @@ class Server {
         this.app.use(this.apiPaths.nota_entrega, nota_entrega_routes_1.default);
         this.app.use(this.apiPaths.nota_salida, nota_salida_routes_1.default);
         this.app.use(this.apiPaths.libro_catalogo, libro_catalogo_routes_1.default);
+        this.app.use(this.apiPaths.prestamo, prestamo_routes_1.default);
+        this.app.use(this.apiPaths.detprestamo, detprestamo_routes_1.default);
     }
     listen() {
         this.app.listen(this.port, () => {

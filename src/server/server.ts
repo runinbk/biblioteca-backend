@@ -23,6 +23,8 @@ import donadorRoutes from "../modules/reports/routers/donador.routes";
 import nota_entregaRoutes from "../modules/reports/routers/nota_entrega.routes";
 import nota_salidaRoutes from "../modules/reports/routers/nota_salida.routes";
 import libro_catalogoRoutes from "../modules/rent/routers/libro_catalogo.routes";
+import prestamoRoutes from "../modules/rent/routers/prestamo.routes";
+import detprestamoRoutes from "../modules/rent/routers/detprestamo.routes";
 
 export class Server {
     private app: Application;
@@ -46,6 +48,8 @@ export class Server {
         nota_entrega: "/api/nota_entrega",
         nota_salida: "/api/nota_salida",
         libro_catalogo: "/api/libro_catalogo",
+        prestamo: "/api/prestamo",
+        detprestamo: "/api/detprestamo",
     };
 
     constructor() {
@@ -98,6 +102,8 @@ export class Server {
         this.app.use(this.apiPaths.nota_entrega, nota_entregaRoutes);
         this.app.use(this.apiPaths.nota_salida, nota_salidaRoutes);
         this.app.use(this.apiPaths.libro_catalogo, libro_catalogoRoutes);
+        this.app.use(this.apiPaths.prestamo, prestamoRoutes);
+        this.app.use(this.apiPaths.detprestamo, detprestamoRoutes);
     }
 
     listen() {
