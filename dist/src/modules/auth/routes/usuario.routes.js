@@ -12,7 +12,7 @@ const validar_jwt_1 = __importDefault(require("../../../middlewares/validar-jwt"
 // import { isAdminRole } from "../middlewares/validar-rol";
 const router = (0, express_1.Router)();
 router.get('/', [
-    validar_jwt_1.default,
+    // validarJWT,
     validar_campos_1.default
 ], usuario_controller_1.gets);
 router.get('/:id', [
@@ -26,13 +26,13 @@ router.post('/create', [
     validar_jwt_1.default,
     (0, express_validator_1.check)('nombre', 'El nombre es obligatorio').not().isEmpty(),
     (0, express_validator_1.check)('password', 'El password debe de ser de mas 6 de caracteres').isLength({ min: 6 }),
-    (0, express_validator_1.check)('correo').custom(db_validator_1.isEmailExist),
+    // check('correo').custom(isEmailExist),
     validar_campos_1.default
 ], usuario_controller_1.post);
 router.post('/', [
     (0, express_validator_1.check)('nombre', 'El nombre es obligatorio').not().isEmpty(),
     (0, express_validator_1.check)('password', 'El password debe de ser de mas 6 de caracteres').isLength({ min: 6 }),
-    (0, express_validator_1.check)('correo').custom(db_validator_1.isEmailExist),
+    // check('correo').custom(isEmailExist),
     validar_campos_1.default
 ], usuario_controller_1.post);
 router.put('/:id', [

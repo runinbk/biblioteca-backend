@@ -16,7 +16,7 @@ import validarJWT from "../../../middlewares/validar-jwt";
 const router = Router();
 
 router.get('/', [
-    validarJWT,
+    // validarJWT,
     validarCampos
 ], gets);
 
@@ -32,14 +32,14 @@ router.post('/create', [
     validarJWT,
     check('nombre', 'El nombre es obligatorio').not().isEmpty(),
     check('password', 'El password debe de ser de mas 6 de caracteres').isLength({ min: 6 }),
-    check('correo').custom(isEmailExist),
+    // check('correo').custom(isEmailExist),
     validarCampos
 ], post);
 
 router.post('/', [
     check('nombre', 'El nombre es obligatorio').not().isEmpty(),
     check('password', 'El password debe de ser de mas 6 de caracteres').isLength({ min: 6 }),
-    check('correo').custom(isEmailExist),
+    // check('correo').custom(isEmailExist),
     validarCampos
 ], post);
 

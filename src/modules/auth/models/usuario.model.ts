@@ -1,23 +1,22 @@
 import { DataTypes, Model } from "sequelize";
 import db from "../../../db/connection";
 import Rol from "./rol.model";
+import Persona from "./persona.model";
 
 class Usuario extends Model {
     public id!: number;
-    public nombre!: string;
-    public correo!: string;
+    public usuario!: string;
     public password!: string;
-    public fecha_nac!: Date;
-    // public celular!: number;
-    public img!: string;
     public state!: boolean;
     public id_rol!: number; // Llave foránea
+    public id_persona!: number; // Llave foránea
 
     // Otras propiedades del modelo...
 
     // Definición de las asociaciones
     public static associate() {
         Usuario.belongsTo(Rol, { foreignKey: "id_rol" });
+        Usuario.belongsTo(Persona, { foreignKey: "id_persona" });
     }
 }
 
@@ -29,24 +28,12 @@ Usuario.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        nombre: {
-            type: DataTypes.STRING,
-        },
-        correo: {
+        usuario: {
             type: DataTypes.STRING,
         },
         password: {
             type: DataTypes.STRING,
         },
-        img: {
-            type: DataTypes.STRING,
-        },
-        fecha_nac: {
-            type: DataTypes.DATE,
-        },
-        // celular: {
-        //     type: DataTypes.INTEGER,
-        // },
         state: {
             type: DataTypes.BOOLEAN,
         },
@@ -57,11 +44,18 @@ Usuario.init(
                 key: "id",
             },
         },
+        id_persona: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: Persona,
+                key: "id",
+            },
+        },
     },
     {
         sequelize: db,
         modelName: "Usuario",
-        tableName: "usuario",
+        tableName: "Usuario",
     }
 );
 

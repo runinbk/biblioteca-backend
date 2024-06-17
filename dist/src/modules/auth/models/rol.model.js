@@ -25,7 +25,7 @@ Rol.init({
 }, {
     sequelize: connection_1.default,
     modelName: "Rol",
-    tableName: "rol",
+    tableName: "Rol",
 });
 exports.default = Rol;
 //# sourceMappingURL=rol.model.js.map
